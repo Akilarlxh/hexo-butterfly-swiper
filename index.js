@@ -26,6 +26,7 @@ hexo.extend.filter.register('after_generate', function () {
     return a.swiper_index - b.swiper_index
   }
   swiper_list = swiper_list.sort(sortNumber);
+  // 排序反转，使得数字越大越靠前
   swiper_list = swiper_list.reverse();
 // =====================================================================
   // 首先获取整体的配置项名称

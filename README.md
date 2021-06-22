@@ -43,13 +43,14 @@
   在文章的`front_matter`中添加`swiper_index`配置项即可。
   ```markdown
   ---
-  title:
-  date:
-  updated:
-  cover:
-  description:
-  swiper_index:
+  title: 文章标题
+  date: 创建日期
+  updated: 更新日期
+  cover: 文章封面
+  description: 文章描述
+  swiper_index: 1 #置顶轮播图顺序，需填非负整数，数字越大越靠前
   ---
   ```
+
 # 截图
 ![](https://cdn.jsdelivr.net/npm/akilar-candyassets/image/f4783623.png)
