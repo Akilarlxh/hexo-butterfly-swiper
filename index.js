@@ -45,10 +45,6 @@ hexo.extend.filter.register('after_generate', function () {
   // 渲染页面
   const temple_html_text = config.temple_html ? config.temple_html : pug.renderFile(path.join(__dirname, './lib/html.pug'),data);
 
-  var str = require('fs').readFileSync(__dirname + './lib/swiperstyle.styl', 'utf8');
-  hexo.extend.renderer.register('styl', 'css', function(str,callback){
-  stylus(data.text).set('swiperstyle', './lib/swiperstyle.styl').render(callback);
-  });
   //cdn资源声明
     //样式资源
   const css_text = `<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Swiper/4.1.6/css/swiper.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/hexo-butterfly-swiper/lib/swiperstyle.css">`
