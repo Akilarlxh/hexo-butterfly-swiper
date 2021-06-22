@@ -27,7 +27,6 @@ hexo.extend.filter.register('after_generate', function () {
   }
   swiper_list = swiper_list.sort(sortNumber);
   swiper_list = swiper_list.reverse();
-  // console.log(swiper_list)
 // =====================================================================
   // 首先获取整体的配置项名称
   const config = hexo.config.swiper || hexo.theme.config.swiper
@@ -41,14 +40,15 @@ hexo.extend.filter.register('after_generate', function () {
       layout_name: config.layout.name,
       layout_index: config.layout.index ? config.layout.index : 0,
       error_img: urlFor(hexo.theme.config.error_img.post_page),
-      swiper_list: swiper_list
+      swiper_list: swiper_list,
+      default_descr: config.default_descr ? config.default_descr : "再怎么看我也不知道怎么描述它的啦！"
     }
   // 渲染页面
   const temple_html_text = config.temple_html ? config.temple_html : pug.renderFile(path.join(__dirname, './lib/html.pug'),data);
 
   //cdn资源声明
     //样式资源
-  const css_text = `<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Swiper/4.1.6/css/swiper.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/hexo-butterfly-swiper@0.0.4/lib/swiperstyle.css">`
+  const css_text = `<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Swiper/4.1.6/css/swiper.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/hexo-butterfly-swiper/lib/swiperstyle.css">`
     //脚本资源
   const js_text = `<script defer src="https://cdnjs.cloudflare.com/ajax/libs/Swiper/4.1.6/js/swiper.min.js"></script><script defer data-pjax src="https://cdn.jsdelivr.net/npm/hexo-butterfly-swiper/lib/swiper_init.js"></script>`
 
