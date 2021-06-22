@@ -16,8 +16,8 @@ hexo.extend.filter.register('after_generate', function () {
   var posts_list = hexo.locals.get('posts').data;
   var swiper_list = []
   // 若文章的front_matter内设置了index和描述，则将其放到swiper_list内
-  for (item of posts_list) {
-    if (item.swiper_index && item.swiper_desc) {
+  for (var item of posts_list) {
+    if (item.swiper_index) {
       swiper_list.push(item)
     }
   }
@@ -27,6 +27,7 @@ hexo.extend.filter.register('after_generate', function () {
   }
   swiper_list = swiper_list.sort(sortNumber);
   swiper_list = swiper_list.reverse();
+  // console.log(swiper_list)
 // =====================================================================
   // 首先获取整体的配置项名称
   const config = hexo.config.swiper || hexo.theme.config.swiper
@@ -39,7 +40,7 @@ hexo.extend.filter.register('after_generate', function () {
       layout_type: config.layout.type,
       layout_name: config.layout.name,
       layout_index: config.layout.index ? config.layout.index : 0,
-      error_img: hexo.theme.config.error_img.post_page,
+      error_img: urlFor(hexo.theme.config.error_img.post_page),
       swiper_list: swiper_list
     }
   // 渲染页面
@@ -47,7 +48,7 @@ hexo.extend.filter.register('after_generate', function () {
 
   //cdn资源声明
     //样式资源
-  const css_text = `<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Swiper/4.1.6/css/swiper.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/hexo-butterfly-swiper/lib/swiperstyle.css">`
+  const css_text = `<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Swiper/4.1.6/css/swiper.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/hexo-butterfly-swiper@0.0.4/lib/swiperstyle.css">`
     //脚本资源
   const js_text = `<script defer src="https://cdnjs.cloudflare.com/ajax/libs/Swiper/4.1.6/js/swiper.min.js"></script><script defer data-pjax src="https://cdn.jsdelivr.net/npm/hexo-butterfly-swiper/lib/swiper_init.js"></script>`
 
