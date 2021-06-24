@@ -6,9 +6,8 @@ const pug = require('pug')
 const path = require('path')
 const urlFor = require('hexo-util').url_for.bind(hexo)
 const util = require('hexo-util')
-const stylus = require('stylus');
 // 过滤器优先级，priority 值越低，过滤器会越早执行，默认priority是10。
-const pre_priority = hexo.config.swiper.priority || hexo.theme.config.swiper.priority
+const pre_priority = hexo.config.swiper.priority ? hexo.config.swiper.priority : hexo.theme.config.swiper.priority
 const priority = pre_priority ? pre_priority : 10
 
 hexo.extend.filter.register('after_generate', function () {
@@ -30,7 +29,7 @@ hexo.extend.filter.register('after_generate', function () {
   swiper_list = swiper_list.reverse();
 // =====================================================================
   // 首先获取整体的配置项名称
-  const config = hexo.config.swiper || hexo.theme.config.swiper
+  const config = hexo.config.swiper ? hexo.config.swiper : hexo.theme.config.swiper
   // 如果配置开启
   if (!(config && config.enable)) return
   // 集体声明配置项
