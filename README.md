@@ -25,6 +25,8 @@
         name: recent-posts
         index: 0
       default_descr: 再怎么看我也不知道怎么描述它的啦！
+      custom_css: https://cdnjs.cloudflare.com/ajax/libs/Swiper/4.1.6/css/swiper.min.css #自定义swiper css依赖
+      custom_js: https://cdnjs.cloudflare.com/ajax/libs/Swiper/4.1.6/js/swiper.min.js #自定义swiper js依赖
   ```
 3. 参数释义
 
@@ -37,7 +39,9 @@
   |layout.type|id/class|【可选】挂载容器类型，填写id或class，不填则默认为id|
   |layout.name|text|【必选】挂载容器名称|
   |layout.index|0和正整数|【可选】前提是layout.type为class，因为同一页面可能有多个class，此项用来确认究竟排在第几个顺位|
-  |default_descr|text|默认文章描述|
+  |default_descr|text|【可选】默认文章描述|
+  |custom_css|url|【可选】自定义的swiper依赖项css链接|
+  |custom_js|url|【可选】自定义的swiper依赖项加js链接|
 
 4. 使用方法
   在文章的`front_matter`中添加`swiper_index`配置项即可。
