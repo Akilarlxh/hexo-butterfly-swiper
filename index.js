@@ -32,6 +32,7 @@ hexo.extend.filter.register('after_generate', function () {
   // 集体声明配置项
     const data = {
       enable_page: config.enable_page ? config.enable_page : "all",
+      exclude: config.exclude,
       timemode: config.timemode ? config.timemode : "date",
       layout_type: config.layout.type,
       layout_name: config.layout.name,
@@ -70,17 +71,30 @@ hexo.extend.filter.register('after_generate', function () {
 
   //挂载容器脚本
   var user_info_js = `<script data-pjax>
-                        function ${pluginname}_injector_config(){
-                          var parent_div_git = ${get_layout};
-                          var item_html = '${temple_html_text}';
-                          console.log('已挂载${pluginname}')
-                          // parent_div_git.innerHTML=item_html+parent_div_git.innerHTML // 无报错，但不影响使用(支持pjax跳转)
-                          parent_div_git.insertAdjacentHTML("afterbegin",item_html) // 有报错，但不影响使用(支持pjax跳转)
-                          }
-                        if( ${get_layout} && (location.pathname ==='${data.enable_page}'|| '${data.enable_page}' ==='all')){
-                        ${pluginname}_injector_config()
-                        }
-                      </script>`
+  function ${pluginname}_injector_config(){
+    var parent_div_git = ${get_layout};
+    var item_html = '${temple_html_text}';
+    console.log('已挂载${pluginname}')
+    parent_div_git.insertAdjacentHTML("beforeend",item_html)
+    }
+  var elist = '${data.exclude}'.split(',');
+  var cpage = location.pathname;
+  var epage = '${data.enable_page}';
+  var flag = 0;
+
+  for (var i=0;i<elist.length;i++){
+    if (cpage.includes(elist[i])){
+      flag++;
+    }
+  }
+
+  if ((epage ==='all')&&(flag == 0)){
+    ${pluginname}_injector_config();
+  }
+  else if (epage === cpage){
+    ${pluginname}_injector_config();
+  }
+  </script>`
   // 注入用户脚本
   // 此处利用挂载容器实现了二级注入
   hexo.extend.injector.register('body_end', user_info_js, "default");
