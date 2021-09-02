@@ -75,7 +75,7 @@ hexo.extend.filter.register('after_generate', function () {
     var parent_div_git = ${get_layout};
     var item_html = '${temple_html_text}';
     console.log('已挂载${pluginname}')
-    parent_div_git.insertAdjacentHTML("beforeend",item_html)
+    parent_div_git.insertAdjacentHTML("afterbegin",item_html)
     }
   var elist = '${data.exclude}'.split(',');
   var cpage = location.pathname;
