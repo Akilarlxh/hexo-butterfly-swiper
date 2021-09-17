@@ -27,6 +27,8 @@
         type: id
         name: recent-posts
         index: 0
+      error_img: /img/default.png #封面图片加载失败的默认封面
+      insertposition: afterbegin
       default_descr: 再怎么看我也不知道怎么描述它的啦！
       custom_css: https://cdnjs.cloudflare.com/ajax/libs/Swiper/4.1.6/css/swiper.min.css #自定义swiper css依赖
       custom_js: https://cdnjs.cloudflare.com/ajax/libs/Swiper/4.1.6/js/swiper.min.js #自定义swiper js依赖
@@ -43,6 +45,8 @@
   |layout.type|id/class|【可选】挂载容器类型，填写id或class，不填则默认为id|
   |layout.name|text|【必选】挂载容器名称|
   |layout.index|0和正整数|【可选】前提是layout.type为class，因为同一页面可能有多个class，此项用来确认究竟排在第几个顺位|
+  |error_img|url|封面图片加载失败时的替换图片|
+  |insertposition|text|'beforebegin'：元素自身的前面。'afterbegin'：插入元素内部的第一个子节点之前。'beforeend'：插入元素内部的最后一个子节点之后。'afterend'：插入元素自身的后面。|
   |default_descr|text|【可选】默认文章描述|
   |custom_css|url|【可选】自定义的swiper依赖项css链接|
   |custom_js|url|【可选】自定义的swiper依赖项加js链接|

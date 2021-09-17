@@ -37,7 +37,8 @@ hexo.extend.filter.register('after_generate', function () {
       layout_type: config.layout.type,
       layout_name: config.layout.name,
       layout_index: config.layout.index ? config.layout.index : 0,
-      error_img: urlFor(hexo.theme.config.error_img.post_page),
+      error_img: config.error_img ? urlFor(config.error_img) : "https://cdn.jsdelivr.net/npm/akilar-candyassets/image/loading.gif",
+      insertposition: config.insertposition ? config.insertposition : "afterbegin",
       swiper_list: swiper_list,
       default_descr: config.default_descr ? config.default_descr : "再怎么看我也不知道怎么描述它的啦！",
       custom_css: config.custom_css ? urlFor(config.custom_css) : "https://cdn.jsdelivr.net/npm/hexo-butterfly-swiper/lib/swiper.min.css",
@@ -75,7 +76,7 @@ hexo.extend.filter.register('after_generate', function () {
     var parent_div_git = ${get_layout};
     var item_html = '${temple_html_text}';
     console.log('已挂载${pluginname}')
-    parent_div_git.insertAdjacentHTML("afterbegin",item_html)
+    parent_div_git.insertAdjacentHTML("${data.insertposition}",item_html)
     }
   var elist = '${data.exclude}'.split(',');
   var cpage = location.pathname;
