@@ -37,21 +37,23 @@ hexo.extend.filter.register('after_generate', function () {
       layout_type: config.layout.type,
       layout_name: config.layout.name,
       layout_index: config.layout.index ? config.layout.index : 0,
-      error_img: config.error_img ? urlFor(config.error_img) : "https://cdn.jsdelivr.net/npm/akilar-candyassets/image/loading.gif",
+      error_img: config.error_img ? urlFor(config.error_img) : "https://unpkg.zhimg.com/akilar-candyassets/image/loading.gif",
       insertposition: config.insertposition ? config.insertposition : "afterbegin",
       swiper_list: swiper_list,
       default_descr: config.default_descr ? config.default_descr : "再怎么看我也不知道怎么描述它的啦！",
-      custom_css: config.custom_css ? urlFor(config.custom_css) : "https://cdn.jsdelivr.net/npm/hexo-butterfly-swiper/lib/swiper.min.css",
-      custom_js: config.custom_js ? urlFor(config.custom_js) : "https://cdn.jsdelivr.net/npm/hexo-butterfly-swiper/lib/swiper.min.js"
+      swiper_css: config.swiper_css ? urlFor(config.swiper_css) : "https://unpkg.zhimg.com/hexo-butterfly-swiper/lib/swiper.min.css",
+      swiper_js: config.swiper_js ? urlFor(config.swiper_js) : "https://unpkg.zhimg.com/hexo-butterfly-swiper/lib/swiper.min.js",
+      custom_css: config.custom_css ? urlFor(config.custom_css) : "https://unpkg.zhimg.com/hexo-butterfly-swiper/lib/swiperstyle.css",
+      custom_js: config.custom_js ? urlFor(config.custom_js) : "https://unpkg.zhimg.com/hexo-butterfly-swiper/lib/swiper_init.js"
     }
   // 渲染页面
   const temple_html_text = config.temple_html ? config.temple_html : pug.renderFile(path.join(__dirname, './lib/html.pug'),data);
 
   //cdn资源声明
     //样式资源
-  const css_text = `<link rel="stylesheet" href="${data.custom_css}"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/hexo-butterfly-swiper/lib/swiperstyle.css">`
+  const css_text = `<link rel="stylesheet" href="${data.swiper_css}" media="print" onload="this.media='all'"><link rel="stylesheet" href="${data.custom_css}" media="print" onload="this.media='all'">`
     //脚本资源
-  const js_text = `<script defer src="${data.custom_js}"></script><script defer data-pjax src="https://cdn.jsdelivr.net/npm/hexo-butterfly-swiper/lib/swiper_init.js"></script>`
+  const js_text = `<script defer src="${data.custom_js}"></script><script defer data-pjax src="${data.swiper_js}"></script>`
 
   //注入容器声明
   var get_layout
