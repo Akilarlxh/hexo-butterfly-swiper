@@ -53,7 +53,7 @@ hexo.extend.filter.register('after_generate', function () {
     //样式资源
   const css_text = `<link rel="stylesheet" href="${data.swiper_css}" media="print" onload="this.media='all'"><link rel="stylesheet" href="${data.custom_css}" media="print" onload="this.media='all'">`
     //脚本资源
-  const js_text = `<script defer src="${data.custom_js}"></script><script defer data-pjax src="${data.swiper_js}"></script>`
+  const js_text = `<script defer src="${data.swiper_js}"></script><script defer data-pjax src="${data.custom_js}"></script>`
 
   //注入容器声明
   var get_layout
