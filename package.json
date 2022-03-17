@@ -1,6 +1,6 @@
 {
   "name": "hexo-butterfly-swiper",
-  "version": "1.0.11",
+  "version": "1.0.12",
   "description": "A Slideshow  plugin for theme-butterfly based on swiper",
   "main": "index.js",
   "scripts": {

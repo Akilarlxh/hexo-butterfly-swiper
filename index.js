@@ -31,6 +31,7 @@ hexo.extend.filter.register('after_generate', function () {
   if (!(config && config.enable)) return
   // 集体声明配置项
     const data = {
+      pjaxenable: hexo.theme.config.pjax.enable,
       enable_page: config.enable_page ? config.enable_page : "all",
       exclude: config.exclude,
       timemode: config.timemode ? config.timemode : "date",
