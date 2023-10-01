@@ -78,8 +78,9 @@ hexo.extend.filter.register('after_generate', function () {
   function ${pluginname}_injector_config(){
     var parent_div_git = ${get_layout};
     var item_html = '${temple_html_text}';
-    console.log('已挂载${pluginname}')
-    parent_div_git.insertAdjacentHTML("${data.insertposition}",item_html)
+    if (parent_div_git !== null) {
+      parent_div_git.insertAdjacentHTML("${data.insertposition}",item_html);
+    }
     }
   var elist = '${data.exclude}'.split(',');
   var cpage = location.pathname;
